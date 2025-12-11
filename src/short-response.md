@@ -42,11 +42,11 @@ console.log(getLetterGrade(65)); // This should print "Your grade is: F"
 
 **Part A:**
 
-Your response...
+The bug occurs because `letter` is being redefined in a local scope, which already references a global variable.
 
 **Part B:**
 
-Your response...
+I would fix it by removing the `let` keyword before `letter` inside the `if` and `else` close scope.
 
 ---
 
@@ -69,20 +69,20 @@ console.log(originalSettings.volume);
 
 **Part A:**
 
-Your response...
+This will be logged, `{ volume: 75, brightness: 80 }`. This happens because the original object is being referenced through `newSettings`.
 
 **Part B:**
 
-Your response...
+I would modify the code so that `newSettings.volume` does not mutate `originalSettings.volume`, by using the method `structuredClone()`. This makes a true copy of the object, not mutating the original object when changing variables.
 
 **Corrected Code:**
 
 ```js
 // Fix this code so newSettings is a true copy
 const originalSettings = { volume: 50, brightness: 80 };
-const newSettings = originalSettings;
-newSettings.volume = 75;
-console.log(originalSettings.volume);
+const newSettings = structuredClone(originalSettings);
+newSettings.volume = 75; // { volume: 75, brightness: 80 }
+console.log(originalSettings.volume); // { volume: 50, brightness: 80 }
 ```
 
 ---
@@ -110,4 +110,6 @@ Walk through what happens in the first iteration of filter:
 
 ### Response 3
 
-Your response...
+  - The value of the `product` will be `true`.
+  - The callback will return a **boolean**, `true` or `false`.
+  - The return value gets **popped**, and a new value is **pushed** in its place. 
